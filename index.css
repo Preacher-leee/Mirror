@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 260 20% 8%;
+  --foreground: 0 0% 98%;
+  --muted: 240 10% 20%;
+  --muted-foreground: 240 5% 65%;
+  --popover: 260 20% 8%;
+  --popover-foreground: 0 0% 98%;
+  --card: 260 20% 12%;
+  --card-foreground: 0 0% 98%;
+  --border: 270 50% 30%;
+  --input: 240 10% 20%;
+  --primary: 270 75% 55%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 180 90% 50%;
+  --secondary-foreground: 240 10% 4%;
+  --accent: 270 75% 55%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 270 75% 55%;
+  --radius: 0.5rem;
+
+  /* Custom Mirror World colors */
+  --deep-purple: 270 53% 24%;
+  --neon-purple: 285 80% 54%;
+  --electric-blue: 182 100% 50%;
+  --cosmic-black: 252 37% 8%;
+  --dark-slate: 261 35% 16%;
+  --twilight-blue: 240 33% 25%;
+  --ethereal-green: 160 70% 60%;
+  --warning-orange: 17 100% 60%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply font-sans antialiased bg-cosmic-black text-foreground;
+    overflow-x: hidden;
+  }
+
+  /* Custom classes for mirror world */
+  .portal-bg {
+    background: radial-gradient(circle at center, hsl(var(--deep-purple)) 0%, hsl(var(--cosmic-black)) 70%);
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-lg bg-dark-slate/60 border border-neon-purple/30;
+  }
+
+  .loading-bar {
+    background: linear-gradient(to right, hsl(var(--neon-purple)), hsl(var(--electric-blue)));
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-electric-blue;
+  }
+
+  /* Custom fonts */
+  .font-rajdhani {
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .font-space {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Animations */
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  @keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+    25% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+    50% { border-radius: 40% 60% 30% 70%/60% 40% 70% 30%; }
+    75% { border-radius: 60% 40% 70% 30%/40% 70% 30% 60%; }
+  }
+
+  @keyframes loading {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+  }
+
+  .cursor-effect {
+    @apply pointer-events-none mix-blend-screen;
+    background: radial-gradient(circle, rgba(12, 242, 255, 0.7) 0%, rgba(12, 242, 255, 0) 70%);
+  }
+
+  .floating {
+    animation: floating 8s ease-in-out infinite;
+  }
+
+  .animate-morph {
+    animation: morph 10s ease-in-out infinite;
+  }
+
+  .animate-loading {
+    animation: loading 10s ease-in-out forwards;
+  }
+
+  .animate-glitch {
+    animation: glitch 2s infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse 3s infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Animation for gradient backgrounds */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation for floating particles */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(10px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
